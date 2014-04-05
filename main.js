@@ -1,3 +1,5 @@
+var repeater;
+
 function getData()
 {
 	var data = {
@@ -31,13 +33,16 @@ function postData(dataObj)
 		
 		$.post("http://tieba.baidu.com/tbscore/opengift",data, getPostAnswer);
 	}
+
+	console.log("再来");
+	repeater = setTimeout("getData()",1000);
 }
 
 function getPostAnswer(responsedData)
 {
 	if(responsedData.no == 0)
-		document.write("捡到一个" + responsedData.gift_got.gift_score + "蛋...<br/>");
+		document.write("捡到一个" + responsedData.data.gift_got.gift_score + "的蛋...<br/>");
 }
 
 document.body.innerHTML = "";
-var t = setTimeout("getData()",1000);
+repeater = setTimeout("getData()",10000);
