@@ -15,6 +15,10 @@ function getData()
 function postData(dataObj)
 {
 	//set post data
+
+	if(dataObj == null || !("data" in dataObj && "gift_info" in dataObj.data))
+		return;
+
 	var giftInfo = dataObj.data.gift_info;
 
 	for(var i = 0 ; i < giftInfo.length; ++i)
